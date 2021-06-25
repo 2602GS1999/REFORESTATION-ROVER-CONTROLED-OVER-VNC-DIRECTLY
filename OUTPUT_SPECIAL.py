@@ -6,19 +6,9 @@ Hello!
 
   I'm Cosmos, a machine  of a different kind!
 
-  My CPU is a one point four giga hertz A.R.M.  cortex quad core processor and i have 1 giga byte  ram .
-  You can order me to do things for you, as long as it stays whithin restrictions made by GANESH SREEDHAR,
-  my creator.
-
   '''
 greeting_speech='''espeak  -s 150 "Hello!
   I'm Cosmos, a machine  of a different kind!
-
-  My CPU is a one point four giga hertz A.R.M.  cortex quad core processor and i have 1 giga byte  ram .
-  You can order me to do things for you, as long as it stays whithin restrictions made by Gaenesh Shreedhar,
-  my creator.
-
- My father is Gaenesh Shreedhar and  I belong to embits family"
 
   '''
 TASK=['HOW CAN I HELP YOU?\r\n','NEXT TASK PLEASE\r\n',
