@@ -1,0 +1,435 @@
+####################################################################
+#                                     E S T E E M               C O N T R O L            C O N S O L E                                      #
+####################################################################
+
+import RPi.GPIO as GPIO
+import time
+from os import system
+
+count_light  = 1
+b = 1
+c = 1
+d = 1
+e = 1
+f = 1
+
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+
+brake            =          7
+accelerator      =          11
+reverse          =          13
+left             =          15
+right            =          37
+fog_lamp         =          19
+wiper            =          21
+lft_ind          =          23
+rgt_ind          =          18
+horn             =          29
+light            =          31
+water            =          33
+
+
+GPIO.setup(brake,GPIO.OUT)                        #     BRAKE 
+GPIO.setup(accelerator,GPIO.OUT)                  #     ACCELERATOR
+GPIO.setup(reverse,GPIO.OUT)                      #     REVERSE
+GPIO.setup(left,GPIO.OUT)                         #     STEER LEFT
+GPIO.setup(right,GPIO.OUT)                        #     STEER RIGHT
+GPIO.setup(fog_lamp,GPIO.OUT)                     #     FOG LAMP
+GPIO.setup(wiper,GPIO.OUT)                        #     WINDSHIELD WIPER
+GPIO.setup(lft_ind,GPIO.OUT)                      #     LEFT INDICATOR
+GPIO.setup(rgt_ind,GPIO.OUT)                      #     RIGHT INDICATOR
+GPIO.setup(horn,GPIO.OUT)                         #     HORN
+GPIO.setup(light,GPIO.OUT)                        #     LIGHT
+GPIO.setup(water,GPIO.OUT)                        #     WATER PUMP FOR WIPER
+
+def FORWARD():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,1)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+
+    print('GOING FORWARD   \r\n')
+    time.sleep(1)
+
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+def BRAKE():
+    GPIO.output(brake,1)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    print('VEHICLE STOPPED \r\n')
+    system("espeak 'VEHICLE STOPPED' ")
+
+def REVERSE():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,1)
+    GPIO.output(reverse,1)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+
+    print('GOING REVERSE   \r\n')
+    time.sleep(1)
+
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+         
+def LEFT():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,1)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+
+    print('TURNING LEFT  \r\n')
+    system("espeak ' left' ")
+
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+def RIGHT():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,1)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+    print('TURNING RIGHT   \r\n')
+    system("espeak ' right' ")
+
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+
+###############################################################################################################
+###############################################################################################################
+
+def LIGHT():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,1)
+    GPIO.output(water,0)
+    print('LIGHT ON   \r\n')
+    system("espeak 'lights on' ")
+
+    
+def WIPER():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,1)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+    print(' WIPER ON   \r\n')
+    system("espeak 'wipers on' ")
+
+def HORN():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,1)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+    print(' HORN   \r\n')
+    system("espeak 'horn' ")
+
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+def RIGHT_INDICATOR():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,1)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+    print('RIGHT_INDICATOR ON   \r\n')
+    system("espeak 'right indicator on' ")
+
+def FOG_LAMP():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,1)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+    
+    print('FOG LAMP ON   \r\n')
+    system("espeak 'fog lamp on' ")
+
+def LEFT_INDICATOR():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,1)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,0)
+
+    print('LEFT INDICATOR ON   \r\n')
+    system("espeak 'left indicator on' ")
+
+def WATER():
+    GPIO.output(brake,0)
+    GPIO.output(accelerator,0)
+    GPIO.output(reverse,0)
+    GPIO.output(left,0)
+    GPIO.output(right,0)
+    GPIO.output(fog_lamp,0)
+    GPIO.output(wiper,0)
+    GPIO.output(lft_ind,0)
+    GPIO.output(rgt_ind,0)
+    GPIO.output(horn,0)
+    GPIO.output(light,0)
+    GPIO.output(water,1)
+    
+    print('WIPER PUMP ON   \r\n')
+    system("espeak 'WIPER PUMP ON ' ")
+
+###########################################################################
+
+NLP_FWD = [ 'FORWARD','F']
+NLP_REV = [ 'BACK','REVERSE']
+NLP_LFT = [ 'LEFT','LIFT'] 
+NLP_RGT = [ 'RIGHT','WRIGHT','WRITE']
+NLP_BRK = [ 'BRAKE','BREAK','STOP']
+
+NLP_LGT = ['LIGHT']
+NLP_IND = ['INDICATOR']
+NLP_WPR = ['WIPER','WINDSHIELD','WIND','SHIELD']
+NLP_HRN = ['HORN']
+NLP_FOG = ['FOG','FOGLAMP','LAMP']
+NLP_BPR = ['BUMPER']
+
+def NLP_FOR_ESTEEM():
+    system("espeak -s 150 'READY FOR COMMAND'")
+    Q = input("\r\n\r\n   ENTER COMMAND   \r\n\r\n")
+    Q = Q.upper()
+    Q = Q.split()
+    if any(x in Q for x in NLP_FWD) == True:
+        FORWARD()
+    elif any(x in Q for x in NLP_REV) == True:
+        REVERSE()
+    elif any(x in Q for x in NLP_LFT ) == True:
+        LEFT()
+    elif any(x in Q for x in NLP_RGT) == True:
+        RIGHT()
+    elif any(x in Q for x in NLP_BRK) == True:
+        BRAKE()
+    elif any(x in Q for x in NLP_LGT) == True:
+        LIGHT()
+    elif any(x in Q for x in NLP_IND) == True:
+        INDICATOR()
+    elif any(x in Q for x in NLP_WPR) == True:
+        WIPER()
+    elif any(x in Q for x in NLP_HRN) == True:
+        HORN()
+    elif any(x in Q for x in NLP_FOG) == True:
+        FOG_LAMP()
+    elif any(x in Q for x in NLP_BPR) == True:
+        LEFT_INDICATOR()
+    else:
+        BRAKE()   
+
+
+###########################################################################
+#                                                   G U I               B E G U I N S                H E R E                                                              #        
+###########################################################################
+
+
+import  tkinter as T
+    
+ESTEEM= T.Tk()
+ESTEEM.title(' MARUTI ESTEEM CONTROL CONSOLE')
+ESTEEM.geometry("600x700")
+ESTEEM.configure(background='black')
+
+############################  M A I N   B U T T O N S   #############################################
+    
+FWD=T.Button(ESTEEM, width=20,bg="blue",fg="white",height=5,text=' FORWARD', command =FORWARD)
+FWD.place(x=210,y=220)
+
+BCK=T.Button(ESTEEM, width=20,bg="blue",fg="white",height=5,text=' REVERSE', command =REVERSE)
+BCK.place(x=210,y=400)
+
+RHT=T.Button(ESTEEM, width=20,bg="blue",fg="white",height=5,text=' RIGHT', command =RIGHT)
+RHT.place(x=400,y=310)
+
+LFT=T.Button(ESTEEM,width=20,bg="blue",fg="white",height=5, text=' LEFT', command =LEFT)
+LFT.place(x=20,y=310)
+
+STP=T.Button(ESTEEM, width=20,bg="red",fg="white",height=5,text=' BRAKE', command =BRAKE)
+STP.place(x=210,y=310)
+
+########################### S O M E   E X T R A   B U T T O N S    #####################################
+
+LGT=T.Button(ESTEEM, width=20,bg="yellow",fg="black",height=2,text='HEAD  LIGHT', command =LIGHT)
+LGT.place(x=210,y=0)
+
+WPR=T.Button(ESTEEM, width=20,bg="yellow",fg="black",height=2,text=' WIPER', command =WIPER)
+WPR.place(x=400,y=0)
+
+HRN=T.Button(ESTEEM,width=20,bg="yellow",fg="black",height=2, text=' HORN', command =HORN)
+HRN.place(x=20,y=0)
+
+RND=T.Button(ESTEEM, width=20,bg="yellow",fg="black",height=2,text='RIGHT INDICATOR', command =RIGHT_INDICATOR)
+RND.place(x=400,y=45)
+
+FOG=T.Button(ESTEEM, width=20,bg="yellow",fg="black",height=2,text=' FOG LAMP', command =FOG_LAMP)
+FOG.place(x=210,y=45)
+
+LND=T.Button(ESTEEM,width=20,bg="yellow",fg="black",height=2, text=' LEFT INDICATOR', command =LEFT_INDICATOR)
+LND.place(x=20,y=45)
+
+###########################   V O I C E      C O M M A N D   ##############################################
+
+def LAUNCH_VOICE():     #   BOY I LOVE THIS PART
+    system("espeak -s 150 'EXITING G U I AND ENTERING VOICE CONTROL MODE FOR SMART ESTEEM'")
+    ESTEEM.destroy()
+    NLP_FOR_ESTEEM()
+
+##############################################################################################
+
+
+WTR=T.Button(ESTEEM,width=20,bg="green",fg="black",height=3, text=' WATER JET ', command = WATER)
+WTR.place(x=400,y=100)
+
+CWV=T.Button(ESTEEM,width=20,bg="green",fg="black",height=3, text=' VOICE CONTROL ', command = LAUNCH_VOICE)
+CWV.place(x=20,y=100)
+
+##############################################################################################
+
+ESTEEM.mainloop()
+GPIO.cleanup()
+
+
